@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int hijau, kuning, merah;
+    cin >> hijau >> kuning >> merah;  
+    char start;
+    cin >> start;                  
+    int t;
+    cin >> t;                      
+
+    string warna[3];
+    int durasi[3];
+
+    if (start == 'G') {
+        warna[0] = "Hijau"; durasi[0] = hijau;
+        warna[1] = "Kuning"; durasi[1] = kuning;
+        warna[2] = "Merah"; durasi[2] = merah;
+    } else if (start == 'Y') {
+        warna[0] = "Kuning"; durasi[0] = kuning;
+        warna[1] = "Merah"; durasi[1] = merah;
+        warna[2] = "Hijau"; durasi[2] = hijau;
+    } else if (start == 'R') {
+        warna[0] = "Merah"; durasi[0] = merah;
+        warna[1] = "Hijau"; durasi[1] = hijau;
+        warna[2] = "Kuning"; durasi[2] = kuning;
+    }
+
+    int total = durasi[0] + durasi[1] + durasi[2];
+    int sisa = t % total;
+
+    int i = 0;
+    while (i < 3 && sisa >= durasi[i]) {
+        sisa -= durasi[i];
+        i++;
+    }
+
+    cout << "Warna sekarang: " << warna[i] << endl;
+    cout << "Sisa waktu: " << durasi[i] - sisa << " detik" << endl;
+
+    return 0;
+}
